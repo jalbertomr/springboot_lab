@@ -1,4 +1,4 @@
-package com.bext.ejemplo.holaspringboot;
+package com.bext;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HolaSpringbootApplicationTests {
+public class SpringBootApplicationTests {
 
 	@Test
 	public void contextLoads() {
