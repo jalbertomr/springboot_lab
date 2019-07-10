@@ -4,11 +4,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/api")
 @ConfigurationProperties(prefix="mensajeando")
 public class MensajeRestController {
+	private RestTemplate template = new RestTemplate();
 	private String asignadaExternamente;
 	private String backendServiceHost;
 	private int backendServicePort;
@@ -19,7 +21,8 @@ public class MensajeRestController {
 			String.format("http://%s:%d/api/backend?mensaje={mensaje} ,%s", 
 			backendServiceHost, backendServicePort, asignadaExternamente);
 		    System.out.println("Enviando a : " + backendServiceUrl);
-		return backendServiceUrl;
+		BackendDTO response = template.getForObject(backendServiceUrl, BackendDTO.class, asignadaExternamente);
+		return response.getMensaje();
 	}
 
 	public String getBackendServiceHost() {
