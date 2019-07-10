@@ -23,6 +23,4 @@ public class BackendDTO {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-	
-	
 }
